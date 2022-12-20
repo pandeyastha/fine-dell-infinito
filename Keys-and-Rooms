@@ -1,0 +1,21 @@
+class Solution {
+private:
+ void dfs(int node, vector<vector<int>>&rooms,vector<bool>&vis){
+     vis[node]=1;
+     for(auto x:rooms[node]){ 
+         if(!vis[x])dfs(x,rooms,vis);}
+ }
+public:
+    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        int n=rooms.size();
+        vector<bool>vis(n,0);
+        int comp=0;
+        for(int i=0;i<n;++i){
+            if(!vis[i]){
+                dfs(i,rooms,vis);
+                comp++;
+            }
+        }
+        return comp==1;
+    }
+};
